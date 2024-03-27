@@ -21,6 +21,10 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import ChatHistory from './pages/ChatHistory';
+import Chat from './pages/Chat';
+import ChatSetting from './pages/ChatSetting';
+import Build from './pages/Build';
 
 setupIonicReact();
 
@@ -28,12 +32,13 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route exact path="/home">
+        <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
+        <Route component={ChatHistory} path="/home" />
+        <Route path="/home/chat" component={Chat} />
+        <Route path="/home/build" component={Build} />
+        <Route path="/home/chatSetting" component={ChatSetting} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
